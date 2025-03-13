@@ -3,35 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import MainImage from "../assets/images/main.png";
 import Button from "../components/Button";
+import { useWallet } from "@/hooks/useWallet";
+import Header from "@/components/Header";
 
 export default function Home() {
+  const { account, connectWallet } = useWallet();
+
   return (
     <div className="bg-dark text-textPrimary min-h-screen flex flex-col items-center px-6">
-      <Head>
-        <title>NFT Marketplace</title>
-        <meta
-          name="description"
-          content="Discover, Collect & Sell Extraordinary NFTs"
-        />
-      </Head>
-      <header className="w-full flex justify-between items-center py-6   max-w-7xl mx-auto text-lg">
-        <h1 className="text-4xl font-bold text-primary">NFT MarketPlace</h1>
-        <nav className="flex space-x-8">
-          <Link href="/marketplace" legacyBehavior>
-            <a className="hover:text-primary">Marketplace</a>
-          </Link>
-          <Link href="/collection" legacyBehavior>
-            <a className="hover:text-primary">Collection</a>
-          </Link>
-          <Link href="/community" legacyBehavior>
-            <a className="hover:text-primary">Community</a>
-          </Link>
-          <Link href="/create" legacyBehavior>
-            <a className="hover:text-primary">Create</a>
-          </Link>
-        </nav>
-        <Button label="Connect Wallet" className="bg-primary text-lg px-6" />
-      </header>
+      <Header />
       <main className="flex flex-col md:flex-row items-center justify-between w-full max-w-7xl mx-auto py-12">
         <div className="text-left max-w-lg">
           <h2 className="text-6xl font-extrabold leading-tight">
@@ -79,6 +59,20 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <section className="w-full max-w-7xl mx-auto py-12 flex justify-around text-center">
+        <div>
+          <p className="text-3xl font-bold text-white">432K+</p>
+          <p className="text-lg text-purple-400">Collections</p>
+        </div>
+        <div>
+          <p className="text-3xl font-bold text-white">200K+</p>
+          <p className="text-lg text-purple-400">Artists</p>
+        </div>
+        <div>
+          <p className="text-3xl font-bold text-white">10K+</p>
+          <p className="text-lg text-purple-400">Community</p>
+        </div>
+      </section>
     </div>
   );
 }
